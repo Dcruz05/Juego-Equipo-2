@@ -42,7 +42,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_p4ksi"]
 radius = 11.0454
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_oeb61")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

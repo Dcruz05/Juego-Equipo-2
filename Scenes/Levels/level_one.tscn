@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://80emoy8lumeo"]
+[gd_scene load_steps=12 format=3 uid="uid://80emoy8lumeo"]
 
 [ext_resource type="Texture2D" uid="uid://cn04eftd7d8sh" path="res://Assets/Assets.png" id="1_vb6ej"]
+[ext_resource type="Texture2D" uid="uid://qd5ygpaepsu" path="res://Assets/Background_1.png" id="1_vhrkl"]
 [ext_resource type="PackedScene" uid="uid://qoyyajibu15" path="res://Scenes/Character/papito.tscn" id="2_uti3g"]
 [ext_resource type="PackedScene" uid="uid://bym7lrdpmf8al" path="res://Scenes/Objects/barrier.tscn" id="3_uy66d"]
 [ext_resource type="PackedScene" uid="uid://bk11ihx5gpoge" path="res://Scenes/Objects/teleport.tscn" id="4_sbrpv"]
 [ext_resource type="PackedScene" uid="uid://bb7cxdco1mere" path="res://Scenes/Mobs/eye.tscn" id="5_sg0r5"]
 [ext_resource type="PackedScene" uid="uid://c2nk5g81powuk" path="res://Scenes/Objects/lever.tscn" id="6_idm1o"]
 [ext_resource type="PackedScene" uid="uid://dx5ymrfvm62d3" path="res://Scenes/Objects/end.tscn" id="7_fqbj3"]
+[ext_resource type="AudioStream" uid="uid://bax6f1mccfqrv" path="res://Assets/osts/Metaphor_ ReFantazio - Battle Theme.mp3" id="8_3pdyt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tmged"]
 texture = ExtResource("1_vb6ej")
@@ -139,6 +141,21 @@ sources/0 = SubResource("TileSetAtlasSource_tmged")
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Background1" type="Sprite2D" parent="."]
+position = Vector2(628.25, 324.25)
+scale = Vector2(2.50706, 2.38051)
+texture = ExtResource("1_vhrkl")
+
+[node name="Background3" type="Sprite2D" parent="."]
+position = Vector2(1880, 324)
+scale = Vector2(2.58871, 2.38051)
+texture = ExtResource("1_vhrkl")
+
+[node name="Background4" type="Sprite2D" parent="."]
+position = Vector2(3116, 324)
+scale = Vector2(2.50706, 2.38051)
+texture = ExtResource("1_vhrkl")
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(8, 206)
 tile_set = SubResource("TileSet_tgaq4")
@@ -180,6 +197,11 @@ limit_left = 0
 limit_top = 0
 limit_right = 3320
 limit_bottom = 650
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="papito"]
+stream = ExtResource("8_3pdyt")
+volume_db = -4.952
+autoplay = true
 
 [node name="End" parent="." instance=ExtResource("7_fqbj3")]
 position = Vector2(3291, 494)

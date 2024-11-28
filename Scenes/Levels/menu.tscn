@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://bl508rmxbm1fm"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/menu.gd" id="1_f0j8a"]
+[ext_resource type="Texture2D" uid="uid://ddjqtlt4ygvd0" path="res://Assets/menu.jpg" id="1_otrwy"]
+[ext_resource type="Texture2D" uid="uid://mbw5hcakumv" path="res://Assets/Menu Buttons/Large Buttons/Large Buttons/Continue Button.png" id="2_i5nd1"]
+[ext_resource type="Texture2D" uid="uid://dadylise15xmu" path="res://Assets/Menu Buttons/Large Buttons/Large Buttons/Exit Button.png" id="3_axkhm"]
+[ext_resource type="Texture2D" uid="uid://cl6ypvuocwwdf" path="res://Assets/Menu Buttons/Large Buttons/Colored Large Buttons/Continue  col_Button.png" id="4_iyv1m"]
+[ext_resource type="Texture2D" uid="uid://c8wwo4kdjnbt0" path="res://Assets/Menu Buttons/Square Buttons/Square Buttons/Audio Square Button.png" id="4_qa4pn"]
+[ext_resource type="AudioStream" uid="uid://d345g102qd7i0" path="res://Assets/osts/決意を胸に.mp3" id="5_1nm3a"]
+[ext_resource type="Texture2D" uid="uid://dr8ishjbje3n0" path="res://Assets/Menu Buttons/Large Buttons/Colored Large Buttons/Exit  col_Button.png" id="6_j6nxa"]
+[ext_resource type="Texture2D" uid="uid://dwvx70p4rdhvh" path="res://Assets/Menu Buttons/Square Buttons/Colored Square Buttons/Audio col_Square Button.png" id="9_pwo74"]
+
+[sub_resource type="SystemFont" id="SystemFont_rwdkd"]
+font_names = PackedStringArray("Javanese Text")
+
+[node name="Menu" type="Control"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 3
+anchor_right = 2.087
+anchor_bottom = 1.74
+offset_left = 1.0
+offset_top = -4.0
+offset_right = -1253.22
+offset_bottom = -487.52
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f0j8a")
+
+[node name="musicaMenu" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(30, 16)
+stream = ExtResource("5_1nm3a")
+volume_db = -2.097
+autoplay = true
+
+[node name="Menu" type="Sprite2D" parent="."]
+position = Vector2(629, 345)
+scale = Vector2(2.00544, 1.87864)
+texture = ExtResource("1_otrwy")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -586.5
+offset_right = 586.5
+offset_bottom = 234.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.771371, 0, 0.21706, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_rwdkd")
+theme_override_font_sizes/font_size = 80
+text = "Papito's Andventure"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -180.0
+offset_right = 150.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="continue" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_i5nd1")
+texture_pressed = ExtResource("4_iyv1m")
+texture_hover = ExtResource("4_iyv1m")
+
+[node name="exit" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_axkhm")
+texture_pressed = ExtResource("6_j6nxa")
+texture_hover = ExtResource("6_j6nxa")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 33.0
+offset_top = 50.0
+offset_right = 133.0
+offset_bottom = 150.0
+
+[node name="botonBocina" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("4_qa4pn")
+texture_pressed = ExtResource("9_pwo74")
+texture_hover = ExtResource("9_pwo74")
+
+[connection signal="pressed" from="VBoxContainer/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="HBoxContainer/botonBocina" to="." method="_on_boton_bocina_pressed"]

@@ -2,10 +2,15 @@ extends CharacterBody2D
 
 const SPEED = 100.0  # Velocidad del enemigo.
 const DAMAGE_COOLDOWN = 1.0  # Tiempo de espera antes de que el enemigo pueda hacer daño de nuevo.
-
+const DAMAGE = 10
 var direction: int = 1  # Dirección en la que se mueve el enemigo (1 = derecha, -1 = izquierda).
 var is_paused: bool = false  # Indica si el enemigo está en pausa debido al cooldown.
 var cooldown_elapsed: float = 0.0  # Tiempo que ha pasado en el cooldown.
+var max_health = 50 # Vida máxima
+var current_health = max_health
+
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player: Node2D = null  # Referencia al jugador
 
 func _physics_process(delta: float) -> void:
 	_handle_pause(delta)
@@ -47,7 +52,7 @@ func _handle_collision_with_papito() -> void:
 		if collision.get_collider().name == "papito":
 			var papito = collision.get_collider() as CharacterBody2D
 			if papito and papito.has_method("take_damage"):
-				papito.take_damage(direction)  # Aplica daño a Papito.
+				papito.take_damage(DAMAGE)  # Aplica daño a Papito.
 				_pause_for_cooldown()  # Pausa al enemigo para el cooldown.
 			break
 
@@ -67,3 +72,12 @@ func _is_colliding_with_wall() -> bool:
 # Si el enemigo colisiona con una pared, invierte su dirección de movimiento.
 func _reverse_direction() -> void:
 	direction *= -1
+	
+func take_damage(damage_amount):
+	current_health -= damage_amount
+	if current_health <= 0:
+		die()
+
+# Controla la muerte del zombi
+func die():
+	queue_free()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bax6f1mccfqrv"
+path="res://.godot/imported/Metaphor_ ReFantazio - Battle Theme.mp3-dfa1e1f03453e172345019f559bad13b.mp3str"
+
+[deps]
+
+source_file="res://Assets/osts/Metaphor_ ReFantazio - Battle Theme.mp3"
+dest_files=["res://.godot/imported/Metaphor_ ReFantazio - Battle Theme.mp3-dfa1e1f03453e172345019f559bad13b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://sonoffeh0uwu"]
+[gd_scene load_steps=10 format=3 uid="uid://sonoffeh0uwu"]
 
 [ext_resource type="Texture2D" uid="uid://cn04eftd7d8sh" path="res://Assets/Assets.png" id="1_vri1h"]
 [ext_resource type="PackedScene" uid="uid://qoyyajibu15" path="res://Scenes/Character/papito.tscn" id="2_vgc84"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bym7lrdpmf8al" path="res://Scenes/Objects/barrier.tscn" id="4_a563q"]
 [ext_resource type="PackedScene" uid="uid://bb7cxdco1mere" path="res://Scenes/Mobs/eye.tscn" id="5_4eh5i"]
 [ext_resource type="PackedScene" uid="uid://d4clvtmdsa80j" path="res://Scenes/Objects/chest.tscn" id="6_ntubm"]
+[ext_resource type="AudioStream" uid="uid://bax6f1mccfqrv" path="res://Assets/osts/Metaphor_ ReFantazio - Battle Theme.mp3" id="7_vl5wr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gml72"]
 texture = ExtResource("1_vri1h")
@@ -177,7 +178,6 @@ scale = Vector2(0.2, 0.2)
 
 [node name="papito" parent="." instance=ExtResource("2_vgc84")]
 position = Vector2(26.0001, 248)
-scale = Vector2(1, 1)
 
 [node name="Camera2D" type="Camera2D" parent="papito"]
 position = Vector2(225, -51)
@@ -186,3 +186,8 @@ limit_left = 0
 limit_top = 0
 limit_right = 1761
 limit_bottom = 228
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="papito"]
+stream = ExtResource("7_vl5wr")
+volume_db = -4.952
+autoplay = true

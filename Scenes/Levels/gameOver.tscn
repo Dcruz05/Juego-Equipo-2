@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://8jhpdddybmti"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/game_over.gd" id="1_2ku8y"]
+[ext_resource type="Texture2D" uid="uid://cwv0ndoi0phu8" path="res://Assets/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 1/1.png" id="2_7782q"]
+[ext_resource type="Texture2D" uid="uid://bh1rmplvkx14u" path="res://Assets/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 1/2.png" id="3_j8yfc"]
+[ext_resource type="Texture2D" uid="uid://bvh3eyfqw4a72" path="res://Assets/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 1/3.png" id="4_tbdv4"]
+[ext_resource type="Texture2D" uid="uid://fmd6lls5tmqv" path="res://Assets/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 1/4.png" id="5_2cq2e"]
+[ext_resource type="AudioStream" uid="uid://ct0u1xwuqhopq" path="res://Assets/osts/還ラナイ声通常.mp3" id="6_s85qv"]
+[ext_resource type="Texture2D" uid="uid://vgdoo6fmpu3m" path="res://Assets/Menu Buttons/Large Buttons/Large Buttons/Menu Button.png" id="7_a4eky"]
+[ext_resource type="Texture2D" uid="uid://38qaxog3fvta" path="res://Assets/Menu Buttons/Large Buttons/Colored Large Buttons/Menu  col_Button.png" id="8_5js2v"]
+[ext_resource type="Texture2D" uid="uid://dadylise15xmu" path="res://Assets/Menu Buttons/Large Buttons/Large Buttons/Exit Button.png" id="9_gnap3"]
+[ext_resource type="Texture2D" uid="uid://dr8ishjbje3n0" path="res://Assets/Menu Buttons/Large Buttons/Colored Large Buttons/Exit  col_Button.png" id="10_mpph7"]
+
+[node name="gameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ku8y")
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(580.25, 334)
+scale = Vector2(2.10677, 2.21605)
+texture = ExtResource("2_7782q")
+
+[node name="2" type="Sprite2D" parent="."]
+position = Vector2(582.5, 137)
+scale = Vector2(2.1059, 1)
+texture = ExtResource("3_j8yfc")
+
+[node name="3" type="Sprite2D" parent="."]
+position = Vector2(502.5, 155)
+scale = Vector2(1.25521, 1)
+texture = ExtResource("4_tbdv4")
+
+[node name="4" type="Sprite2D" parent="."]
+position = Vector2(902, 140)
+texture = ExtResource("5_2cq2e")
+
+[node name="5" type="Sprite2D" parent="."]
+position = Vector2(305.5, 140)
+scale = Vector2(1.07118, 1)
+texture = ExtResource("5_2cq2e")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.988
+offset_top = -61.34
+offset_right = 57.988
+offset_bottom = 61.34
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer"]
+custom_minimum_size = Vector2(720, 360)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.979379, 0.680365, 3.85046e-07, 1)
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center][wave]GAME OVER[/wave][/center]
+"
+
+[node name="musicaGameOver" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_s85qv")
+autoplay = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -360.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+
+[node name="menu" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("7_a4eky")
+texture_pressed = ExtResource("8_5js2v")
+texture_hover = ExtResource("8_5js2v")
+
+[node name="exit" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("9_gnap3")
+texture_pressed = ExtResource("10_mpph7")
+texture_hover = ExtResource("10_mpph7")
+
+[connection signal="pressed" from="VBoxContainer/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]

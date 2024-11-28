@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://u4ik32gfyksi"
+path="res://.godot/imported/Time Flows Ever Onward.mp3-b531de9c12630655b214dec50f12bd4f.mp3str"
+
+[deps]
+
+source_file="res://Assets/osts/Time Flows Ever Onward.mp3"
+dest_files=["res://.godot/imported/Time Flows Ever Onward.mp3-b531de9c12630655b214dec50f12bd4f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

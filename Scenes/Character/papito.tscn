@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://qoyyajibu15"]
+[gd_scene load_steps=37 format=3 uid="uid://qoyyajibu15"]
 
 [ext_resource type="Script" path="res://Code/Character/papito.gd" id="1_ui8ot"]
 [ext_resource type="Texture2D" uid="uid://c6v65ee17y683" path="res://Assets/characters/Sprites/without_outline/ATTACK 1.png" id="2_o2v5i"]
@@ -133,7 +133,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -214,13 +214,49 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0aqsq"]
 height = 38.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjgk0"]
+size = Vector2(14, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bml86"]
+size = Vector2(14, 20)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjlx5"]
+bg_color = Color(0.8278, 0, 0.209385, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="papito" type="CharacterBody2D"]
 script = ExtResource("1_ui8ot")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_va2su")
-animation = &"Idle"
+animation = &"Attack"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0aqsq")
+
+[node name="areaAtaque" type="Area2D" parent="."]
+
+[node name="Melee" type="CollisionShape2D" parent="areaAtaque"]
+position = Vector2(17, 3)
+shape = SubResource("RectangleShape2D_qjgk0")
+disabled = true
+
+[node name="Melee2" type="CollisionShape2D" parent="areaAtaque"]
+position = Vector2(-17, 4)
+shape = SubResource("RectangleShape2D_bml86")
+disabled = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -9.0
+offset_top = -23.0
+offset_right = 10.0
+offset_bottom = -19.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_sjlx5")
+value = 100.0
+show_percentage = false
+
+[connection signal="body_entered" from="areaAtaque" to="." method="_on_area_ataque_body_entered"]
